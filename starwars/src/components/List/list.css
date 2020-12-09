@@ -1,0 +1,17 @@
+.ListView {
+
+    /* Rectangle 1 */
+
+
+    position: absolute;
+    width: 350px;
+    height: 848px;
+    left: 0px;
+    top: 52px;
+
+    background: #FFFFFF;
+    box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.15);
+
+    /*border-style: solid;*/
+
+}
