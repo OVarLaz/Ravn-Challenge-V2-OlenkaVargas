@@ -65,6 +65,11 @@ If the data have a problem to load, the message **error** will be displayed.
 The correcty data loaded will be visualizated between a **List** component.
 ![View List People](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/list.png)
 
+These views work with the function AllPeople using the propierty useQuery to get that information. 
+![AllPeople Function](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/AllPeople.png)
+After, the view render the answers
+![Render Function](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/A;;PeopleReturn.png)
+
 Finally, when clicking on any of the components of the list, we will see in **detail** on the right side the information of the data in the query 
 ![View Detail Information Person](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/detail.png)
 
@@ -98,6 +103,10 @@ Note that the project only makes use of an API query.
 	}
 
 The objective of this is to take advantage of the graph structure that GraphQL uses, to access the information, and to be able to handle without problem in the development. A valid idea would have been to use multiple queries for each data request to Person, however, that would not allow us to take advantage of the tree structure of GraphQL
+
+### Branch Pagination
+The challenge includes using a Pagination to load 5 people at a time. This is my resolution to do it, but in the render to `loadMore`, the data is no loaded. This issue is in the new branch: `pagination`
+![Pagination](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/paginador.png)
 
 ## Technologies 
 Description of the technologies used
