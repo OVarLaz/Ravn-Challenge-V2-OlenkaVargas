@@ -15,3 +15,131 @@
     /*border-style: solid;*/
 
 }
+.Loading {
+    /* Loading */
+
+
+    position: absolute;
+    left: 0%;
+    right: 1.54%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Header */
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.0125em;
+
+    /* Text/Light */
+
+    color: #828282;
+}
+
+.ErrorData {
+    /* Failed to Load Data */
+
+
+    position: absolute;
+    left: -9.52%;
+    right: -10.32%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Header */
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.0125em;
+
+    /* Text/Emphasis */
+
+    color: #EC5757;
+}
+
+.card {
+    /*border: none;*/
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    background: #FFFFFF;
+    border-bottom:solid black 1px;
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.PersonList {
+    /* Rectangle 3 */
+
+
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #FFFFFF;
+
+}
+
+.TitleLabel {
+    /*position: absolute;*/
+    left: 0%;
+    right: 45.99%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Header */
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.0125em;
+
+    /* Text/Dark */
+
+    color: #333333;
+}
+
+.DescriptionLabel {
+    /*position: absolute;*/
+    left: 0%;
+    right: 43.82%;
+    top: 0%;
+    bottom: 0%;
+
+    /* Paragraph */
+
+    font-family: SF Pro Display;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.0125em;
+
+    /* Text/Light */
+
+    color: #828282;
+}
