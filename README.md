@@ -57,12 +57,16 @@ starwars
 ## Navigation
 
 When we start running the project the first view is the main with the Header Component and meanwhile, data is loaded, it is displayed in a **loading** section in the list view.
+![View Loading](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/loading.png)
 
 If the data have a problem to load, the message **error** will be displayed.
+![View Error Message](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/error.png)
 
 The correcty data loaded will be visualizated between a **List** component.
+![View List People](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/list.png)
 
 Finally, when clicking on any of the components of the list, we will see in **detail** on the right side the information of the data in the query 
+![View Detail Information Person](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/detail.png)
 
 ## Additional information
 
