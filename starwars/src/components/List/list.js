@@ -4,12 +4,19 @@ import {useQuery} from "@apollo/client";
 import {GET_ALL_PEOPLE} from "../../api/query";
 import Detail from "../Detail/detail";
 
+import AwesomeComponent from "../Icons/spinner";
 
 
 function AllPeople({onClickFunction}) {
-    const { loading, error, data } = useQuery(GET_ALL_PEOPLE);
-    if (loading) return <p className="Loading">Loading...</p>;
-    if (error) return <p className="ErrorData">Failed to Load Data</p>;
+
+    const { loading, error, data, fetchMore } = useQuery(GET_ALL_PEOPLE, {
+        variables: {
+            offset: 0,
+            limit: 10
+        },
+    });
+    if (loading) return <div className="Loading"><AwesomeComponent /> Loading...</div>;
+    if (error) return <div className="ErrorData">Failed to Load Data</div>;
 
     return data.allPeople.people.map((item, index) => (
         <div key={item.id}

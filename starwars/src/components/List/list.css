@@ -19,8 +19,8 @@
     /* Loading */
 
 
-    position: absolute;
-    left: 0%;
+    position: relative;
+    left: 30%;
     right: 1.54%;
     top: 0%;
     bottom: 0%;
@@ -45,9 +45,10 @@
     /* Failed to Load Data */
 
 
-    position: absolute;
-    left: -9.52%;
-    right: -10.32%;
+    position: relative;
+    left: 25%;
+    align-items: center;
+    right: 0.52%;
     top: 0%;
     bottom: 0%;
 
