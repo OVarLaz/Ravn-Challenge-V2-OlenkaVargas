@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component, useState, useEffect, Suspense  }  from 'react';
 import './list.css';
 import {useQuery} from "@apollo/client";
 import {GET_ALL_PEOPLE} from "../../api/query";
@@ -8,13 +8,54 @@ import AwesomeComponent from "../Icons/spinner";
 
 
 function AllPeople({onClickFunction}) {
-
+    const [isFetching, setIsFetching] = useState(false);
+    let [limit, setLimit] = useState(1);
     const { loading, error, data, fetchMore } = useQuery(GET_ALL_PEOPLE, {
         variables: {
+            type: "PUBLIC".toUpperCase(),
             offset: 0,
-            limit: 10
+            limit: 5
         },
     });
+
+    useEffect(() => {
+        fetchData();
+        window.addEventListener('scroll', handleScroll);
+    }, []);
+
+    const handleScroll = () => {
+        if (
+            Math.ceil(window.innerHeight + document.documentElement.scrollTop) !== document.documentElement.offsetHeight ||
+            isFetching
+        )
+            return;
+        setIsFetching(true);
+        console.log(isFetching);
+    };
+
+    const fetchData = () => {
+        limit = data? data.allPeople.people.length : 0;
+        fetchMore({
+            variables: {
+                offset: limit,
+                limit: 5,
+            },
+        }).then(fetchMoreResult => {
+            setLimit(limit + fetchMoreResult.data.allPeople.people.length);
+        });
+
+    };
+
+    useEffect(() => {
+        if (!isFetching) return;
+        fetchMoreListItems();
+    }, [isFetching]);
+
+    const fetchMoreListItems = () => {
+        fetchData();
+        setIsFetching(false);
+    };
+
     if (loading) return <div className="Loading"><AwesomeComponent /> Loading...</div>;
     if (error) return <div className="ErrorData">Failed to Load Data</div>;
 
@@ -32,7 +73,6 @@ function AllPeople({onClickFunction}) {
                     </p>
                 </div>
             </div>
-
         </div>
     ));
 }
@@ -51,10 +91,9 @@ class List extends Component {
         return (
             <div>
                 <div className="ListView">
-                    <AllPeople onClickFunction={(e, item) => this.onClickFunction(e, item)}/>
+                        <AllPeople onClickFunction={(e, item) => this.onClickFunction(e, item)}/>
                 </div>
                 <div>
-                    {/*{this.state.item_data === ''? '' : this.state.item_data.name}*/}
                     <Detail data={this.state.item_data}/>
                 </div>
             </div>
