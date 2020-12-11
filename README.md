@@ -68,7 +68,7 @@ The correcty data loaded will be visualizated between a **List** component.
 These views work with the function AllPeople using the propierty useQuery to get that information. 
 ![AllPeople Function](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/AllPeople.png)
 After, the view render the answers
-![Render Function](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/A;;PeopleReturn.png)
+![Render Function](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/AllPeopleReturn.png)
 
 Finally, when clicking on any of the components of the list, we will see in **detail** on the right side the information of the data in the query 
 ![View Detail Information Person](https://github.com/OVarLaz/Ravn-Challenge-V2-OlenkaVargas/blob/main/detail.png)
