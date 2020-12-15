@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, Suspense  }  from 'react';
+import React, { Component, useState  }  from 'react';
 import './list.css';
 import {useQuery} from "@apollo/client";
 import {GET_ALL_PEOPLE} from "../../api/query";
@@ -8,53 +8,36 @@ import AwesomeComponent from "../Icons/spinner";
 
 
 function AllPeople({onClickFunction}) {
-    const [isFetching, setIsFetching] = useState(false);
-    let [limit, setLimit] = useState(1);
+    //const [isFetching, setIsFetching] = useState(false);
+    //let [limit, setLimit] = useState(1);
     const { loading, error, data, fetchMore } = useQuery(GET_ALL_PEOPLE, {
         variables: {
             type: "PUBLIC".toUpperCase(),
             offset: 0,
             limit: 5
         },
+        //pollInterval: 500,
     });
 
-    useEffect(() => {
-        fetchData();
-        window.addEventListener('scroll', handleScroll);
-    }, []);
-
-    const handleScroll = () => {
-        if (
-            Math.ceil(window.innerHeight + document.documentElement.scrollTop) !== document.documentElement.offsetHeight ||
-            isFetching
-        )
-            return;
-        setIsFetching(true);
-        console.log(isFetching);
-    };
-
-    const fetchData = () => {
-        limit = data? data.allPeople.people.length : 0;
+    const onLoadMore = () => {
         fetchMore({
-            variables: {
-                offset: limit,
-                limit: 5,
+            variables:{
+                cursor: data.allPeople.pageInfo.endCursor
             },
-        }).then(fetchMoreResult => {
-            setLimit(limit + fetchMoreResult.data.allPeople.people.length);
-        });
+            updateQuery: (prev, {fetchMoreResult}) => {
+                const newPerson = fetchMoreResult.allPeople.people;
+                const pageInfo = fetchMoreResult.allPeople.pageInfo;
 
-    };
-
-    useEffect(() => {
-        if (!isFetching) return;
-        fetchMoreListItems();
-    }, [isFetching]);
-
-    const fetchMoreListItems = () => {
-        fetchData();
-        setIsFetching(false);
-    };
+                return newPerson.length ? {
+                    allPeople: {
+                        __typename: prev.allPeople.__typename,
+                        people: [...prev.allPeople.people,...newPerson],
+                        pageInfo
+                    }
+                }: prev;
+            }
+        })
+    }
 
     if (loading) return <div className="Loading"><AwesomeComponent /> Loading...</div>;
     if (error) return <div className="ErrorData">Failed to Load Data</div>;
@@ -74,7 +57,7 @@ function AllPeople({onClickFunction}) {
                 </div>
             </div>
         </div>
-    ));
+    ), onLoadMore());
 }
 
 class List extends Component {
